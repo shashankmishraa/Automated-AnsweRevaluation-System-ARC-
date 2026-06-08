@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample PDF Evaluation Report</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        .header h1 { font-size: 2.5em; margin-bottom: 10px; }
+        .header p { font-size: 1.2em; opacity: 0.9; }
+        .info-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 40px;
+            background: #f8f9fa;
+            border-bottom: 3px solid #e9ecef;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .info-item {
+            background: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .info-item h3 {
+            color: #667eea;
+            font-size: 0.85em;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+        .info-item p {
+            font-size: 1.1em;
+            color: #333;
+            font-weight: 600;
+        }
+        .overall-score {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+        .score-circle {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .percentage {
+            font-size: 3.5em;
+            font-weight: bold;
+            color: #f5576c;
+        }
+        .grade {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #667eea;
+            margin-top: 10px;
+        }
+        .marks {
+            font-size: 1.3em;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+        .questions {
+            padding: 40px;
+        }
+        .questions h2 {
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2em;
+        }
+        .question-card {
+            background: #f8f9fa;
+            border-left: 5px solid #667eea;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .question-number {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #667eea;
+        }
+        .question-score {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .score-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .metric {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .metric-name {
+            font-size: 0.85em;
+            color: #666;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        .metric-value {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #667eea;
+        }
+        .feedback {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        .feedback strong { color: #856404; }
+        .keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+        .keyword-tag {
+            background: #d4edda;
+            color: #155724;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85em;
+        }
+        .keyword-tag.missing {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        .answer-section {
+            margin-top: 20px;
+        }
+        .answer-text {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            line-height: 1.6;
+            font-size: 0.95em;
+        }
+        .answer-label {
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 8px;
+        }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            background: #333;
+            color: white;
+        }
+        @media print {
+            body { background: white; padding: 0; }
+            .container { box-shadow: none; }
+            .overall-score { background: #f093fb; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 Sample PDF Evaluation Report</h1>
+            <p>OCR-Based Answer Scoring Results</p>
+        </div>
+        
+        <div class="info-bar">
+            <div class="info-item">
+                <h3>Question Paper</h3>
+                <p>📄 sample_question_paper.pdf</p>
+            </div>
+            <div class="info-item">
+                <h3>Student Answers</h3>
+                <p>✍️ sample_handwritten_answers_generated.pdf</p>
+            </div>
+            <div class="info-item">
+                <h3>Evaluation Date</h3>
+                <p>2026-04-02</p>
+            </div>
+            <div class="info-item">
+                <h3>Total Questions</h3>
+                <p>5</p>
+            </div>
+        </div>
+        
+        <div class="overall-score">
+            <div class="score-circle">
+                <div class="percentage">77.06%</div>
+                <div class="grade">Grade: B+</div>
+            </div>
+            <div class="marks">
+                Total Marks: 38.53/50.0
+            </div>
+        </div>
+        
+        <div class="questions">
+            <h2>📝 Question-by-Question Analysis</h2>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div class="question-number">Question 1</div>
+                    <div class="question-score">
+                        7.66/10 marks (7.66/10)
+                    </div>
+                </div>
+                
+                <div class="score-grid">
+                    <div class="metric">
+                        <div class="metric-name">Similarity</div>
+                        <div class="metric-value">72.0%</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-name">Coverage</div>
+                        <div class="metric-value">68.0%</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-name">Grammar</div>
+                        <div class="metric-value">85.0%</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-name">Relevance</div>
+                        <div class="metric-value">88.0%</div>
+                    </div>
+                </div>
+                
+                <div class="feedback">
+                    <strong>Feedback:</strong> Good explanation of photosynthesis. You covered the basic process correctly but missed details about light-dependent reactions and Calvin cycle. Include the chemical equation for completeness.
+                </div>
+                
+                <div>
+                    <strong>✅ Matched Keywords (8):</strong>
+                    <div class="keywords">
+<span class="keyword-tag">photosynthesis</span><span class="keyword-tag">light energy</span><span class="keyword-tag">chlorophyll</span><span class="keyword-tag">glucose</span><span class="keyword-tag">oxygen</span><span class="keyword-tag">chemical energy</span><span class="keyword-tag">plants</span><span class="keyword-tag">sunlight</span>
+                    </div>
+                </div>
+                
+                <div>
+                    <strong>❌ Missing Keywords:</strong>
+                    <div class="keywords">
+<span class="keyword-tag missing">chloroplasts</span><span class="keyword-tag missing">Calvin cycle</span><span class="keyword-tag missing">light-dependent reactions</span><span class="keyword-tag missing">CO₂</span><span class="keyword-tag missing">NADPH</span><span class="keyword-tag missing">chemical equation</span>
+                    </div>
+                </div>
+                
+                <div class="answer-section">
+                    <div class="answer-label">Student Answer:</div>
+                    <div class="answer-text">Photosynthesis is the process by which green plants use sunlight to synthesize foods from carbon dioxide and water. Photosynthesis in plants generally involves the green pigment chlorophyll and generates oxygen as a byproduct. The process converts light energy into chemical energy stored in glucose.</div>
+                    
+                    <div class="answer-label">Reference Answer (Excerpt):</div>
+                    <div class="answer-text">Photosynthesis is the biochemical process by which green plants, algae, and some bacteria convert light energy into chemical energy stored in glucose molecules. The overall equation is: 6CO₂ + 6H₂O + light energy → C₆H₁₂O₆ + 6O₂. The process occurs in chloroplasts and involves two main stages: light-dependent reactions (which capture light energy to produce ATP and NADPH) and the Calvin cycle (whi...</div>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div class="question-number">Question 2</div>
+                    <div class="question-score">
+                        7.92/10 marks (7.92/10)
+                    </div>
+                </div>
+                
+                <div class="score-grid">
+                    <div class="metric">
+                        <div class="metric-name">Similarity</div>
+                        <div class="metric-value">75.0%</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-name">Coverage</div>
+                        <div class="metric-value">71.0%</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-name">Grammar</div>
+                        <div class="metric-value">87.0%</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-name">Relevance</div>
+                        <div class="metric-value">90.0%</div>
+                    </div>
+                </div>
+                
+                <div class="feedback">
+                    <strong>Feedback:</strong> Solid understanding of mitochondria structure and function. Good mention of ATP production. Could elaborate more on the role of cristae and mitochondrial DNA.
+                </div>
+                
+                <div>
+                    <strong>✅ Matched Keywords (8):</strong>
+                    <div class="keywords">
+<span class="keyword-tag">mitochondria</span><span class="keyword-tag">ATP</span><span class="keyword-tag">cellular respiration</span><span class="keyword-tag">outer membrane</span><span class="keyword-tag">inner membrane</span><span class="keyword-tag">cristae</span><span class="keyword-tag">matrix</span><span class="keyword-tag">organelle</span>
+                    </div>
+                </div>
+                
+                <div>
+                    <strong>❌ Missing Keywords:</strong>
+                    <div class="keywords">
+<span class="keyword-tag missing">intermembrane space</span><span class="keyword-tag missing">oxidative phosphorylation</span><span class="keyword-tag missing">ETC proteins</span><span class="keyword-tag missing">calcium homeostasis</span><span class="keyword-tag missing">apoptosis</span>
+                    </div>
+                </div>
+                
+                <div class="answer-section">
+                    <div class="answer-label">Student Answer:</div>
+                    <div class="answer-text">Mitochondria are membrane-bound organelles found in the cytoplasm of eukaryotic cells. They have an outer membrane and inner membrane with cristae. Mitochondria produce ATP through cellular respiration and are known as the powerhouse of the cell. They contain their own DNA and ribosomes.</div>
+                    
+                    <div class="answer-label">Reference Answer (Excerpt):</div>
+                    <div class="answer-text">Mitochondria are double-membrane-bound organelles found in eukaryotic cells. Structure: Outer membrane (smooth, permeable), intermembrane space, inner membrane (folded into cristae, contains ETC proteins), and matrix (contains mitochondrial DNA, ribosomes, enzymes). Function: Site of aerobic respiration including Krebs cycle and oxidative phosphorylation, producing ATP. Also involved in calcium ho...</div>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div class="question-number">Question 3</div>
+                    <div class="question-score">
+                        11.18/15 marks (7.45/10)
+                    </div>
+                </div>
+                
+                <div class="score-grid">
+                    <div class="metric">
+                        <div class="metric-name">Similarity</div>
+                        <div class="metric-value">70.0%</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-name">Coverage</div>
+                        <div class="metric-value">65.0%</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-name">Grammar</div>
+                        <div class="metric-value">84.0%</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-name">Relevance</div>
+                        <div class="metric-value">86.0%</div>
+                    </div>
+                </div>
+                
+                <div class="feedback">
+                    <strong>Feedback:</strong> Clear description of cellular respiration stages. You identified the key processes but need more detail on ATP yield and location of each stage. Good mention of aerobic conditions.
+                </div>
+                
+                <div>
+                    <strong>✅ Matched Keywords (7):</strong>
+                    <div class="keywords">
+<span class="keyword-tag">cellular respiration</span><span class="keyword-tag">ATP</span><span class="keyword-tag">glycolysis</span><span class="keyword-tag">Krebs cycle</span><span class="keyword-tag">electron transport chain</span><span class="keyword-tag">mitochondria</span><span class="keyword-tag">aerobic</span>
+                    </div>
+                </div>
+                
+                <div>
+                    <strong>❌ Missing Keywords:</strong>
+                    <div class="keywords">
+<span class="keyword-tag missing">pyruvate</span><span class="keyword-tag missing">acetyl-CoA</span><span class="keyword-tag missing">NADH</span><span class="keyword-tag missing">FADH₂</span><span class="keyword-tag missing">proton gradient</span><span class="keyword-tag missing">ATP synthase</span><span class="keyword-tag missing">oxidative phosphorylation</span>
+                    </div>
+                </div>
+                
+                <div class="answer-section">
+                    <div class="answer-label">Student Answer:</div>
+                    <div class="answer-text">Cellular respiration is the metabolic process that converts biochemical energy from nutrients into ATP. It involves glycolysis, Krebs cycle, and electron transport chain. Aerobic respiration requires oxygen and produces CO2 and water. The process occurs in mitochondria and cytoplasm.</div>
+                    
+                    <div class="answer-label">Reference Answer (Excerpt):</div>
+                    <div class="answer-text">Cellular respiration is a catabolic pathway that breaks down organic molecules to release energy stored in chemical bonds. Three main stages: 1) Glycolysis (cytoplasm): Glucose → 2 Pyruvate + 2 ATP + 2 NADH. 2) Krebs Cycle (mitochondrial matrix): Acetyl-CoA → 3 NADH + FADH₂ + ATP + CO₂. 3) Electron Transport Chain & Oxidative Phosphorylation (inner mitochondrial membrane): NADH/FADH₂ donate electr...</div>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div class="question-number">Question 4</div>
+                    <div class="question-score">
+                        7.74/10 marks (7.74/10)
+                    </div>
+                </div>
+                
+                <div class="score-grid">
+                    <div class="metric">
+                        <div class="metric-name">Similarity</div>
+                        <div class="metric-value">73.0%</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-name">Coverage</div>
+                        <div class="metric-value">69.0%</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-name">Grammar</div>
+                        <div class="metric-value">86.0%</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-name">Relevance</div>
+                        <div class="metric-value">88.0%</div>
+                    </div>
+                </div>
+                
+                <div class="feedback">
+                    <strong>Feedback:</strong> Good definition of enzymes and their catalytic role. Nice examples provided. Expand on enzyme specificity and factors affecting enzyme activity like temperature and pH.
+                </div>
+                
+                <div>
+                    <strong>✅ Matched Keywords (8):</strong>
+                    <div class="keywords">
+<span class="keyword-tag">enzymes</span><span class="keyword-tag">catalysts</span><span class="keyword-tag">active site</span><span class="keyword-tag">substrates</span><span class="keyword-tag">activation energy</span><span class="keyword-tag">amylase</span><span class="keyword-tag">protease</span><span class="keyword-tag">lipase</span>
+                    </div>
+                </div>
+                
+                <div>
+                    <strong>❌ Missing Keywords:</strong>
+                    <div class="keywords">
+<span class="keyword-tag missing">enzyme-substrate complex</span><span class="keyword-tag missing">lock-and-key</span><span class="keyword-tag missing">induced-fit</span><span class="keyword-tag missing">allosteric regulation</span><span class="keyword-tag missing">inhibition types</span>
+                    </div>
+                </div>
+                
+                <div class="answer-section">
+                    <div class="answer-label">Student Answer:</div>
+                    <div class="answer-text">Enzymes are biological catalysts that speed up chemical reactions without being consumed. They have specific active sites where substrates bind. Enzymes work by lowering activation energy. Examples include amylase, protease, and lipase. They are essential for digestion and metabolism.</div>
+                    
+                    <div class="answer-label">Reference Answer (Excerpt):</div>
+                    <div class="answer-text">Enzymes are protein catalysts that accelerate chemical reactions by lowering activation energy. Key characteristics: specificity (lock-and-key or induced-fit model), reusability, sensitivity to temperature and pH. Mechanism: Substrate binds to active site forming enzyme-substrate complex, reaction occurs, products released. Classification: oxidoreductases, transferases, hydrolases, lyases, isomera...</div>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div class="question-number">Question 5</div>
+                    <div class="question-score">
+                        4.03/5 marks (8.05/10)
+                    </div>
+                </div>
+                
+                <div class="score-grid">
+                    <div class="metric">
+                        <div class="metric-name">Similarity</div>
+                        <div class="metric-value">76.0%</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-name">Coverage</div>
+                        <div class="metric-value">73.0%</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-name">Grammar</div>
+                        <div class="metric-value">88.0%</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-name">Relevance</div>
+                        <div class="metric-value">91.0%</div>
+                    </div>
+                </div>
+                
+                <div class="feedback">
+                    <strong>Feedback:</strong> Accurate description of DNA structure. Good mention of base pairing rules. Could add more about the antiparallel nature and significance of complementary base pairing.
+                </div>
+                
+                <div>
+                    <strong>✅ Matched Keywords (7):</strong>
+                    <div class="keywords">
+<span class="keyword-tag">DNA</span><span class="keyword-tag">double helix</span><span class="keyword-tag">base pairs</span><span class="keyword-tag">nucleotides</span><span class="keyword-tag">genetic information</span><span class="keyword-tag">replication</span><span class="keyword-tag">proteins</span>
+                    </div>
+                </div>
+                
+                <div>
+                    <strong>❌ Missing Keywords:</strong>
+                    <div class="keywords">
+<span class="keyword-tag missing">sugar-phosphate backbone</span><span class="keyword-tag missing">hydrogen bonds</span><span class="keyword-tag missing">adenine</span><span class="keyword-tag missing">thymine</span><span class="keyword-tag missing">guanine</span><span class="keyword-tag missing">cytosine</span><span class="keyword-tag missing">antiparallel</span>
+                    </div>
+                </div>
+                
+                <div class="answer-section">
+                    <div class="answer-label">Student Answer:</div>
+                    <div class="answer-text">DNA (deoxyribonucleic acid) carries genetic information. It has a double helix structure with two strands connected by base pairs (A-T, G-C). DNA is composed of nucleotides containing sugar, phosphate, and nitrogenous bases. It replicates during cell division and codes for proteins.</div>
+                    
+                    <div class="answer-label">Reference Answer (Excerpt):</div>
+                    <div class="answer-text">DNA is a double-stranded helical nucleic acid containing genetic instructions for development and function. Structure (Watson-Crick model): Sugar-phosphate backbone with nitrogenous bases projecting inward. Base pairing: Adenine (A) pairs with Thymine (T) via 2 hydrogen bonds; Guanine (G) pairs with Cytosine (C) via 3 hydrogen bonds. Antiparallel strands (5'→3' and 3'→5'). Functions: genetic infor...</div>
+                </div>
+            </div>
+
+        </div>
+        
+        <div class="footer">
+            <p>Generated on 2026-04-02</p>
+            <p>OCR-Based Automated Evaluation System</p>
+            <p>Files: sample_question_paper.pdf + sample_handwritten_answers_generated.pdf</p>
+        </div>
+    </div>
+</body>
+</html>

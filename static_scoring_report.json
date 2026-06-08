@@ -1,0 +1,217 @@
+{
+  "evaluation_date": "2026-04-02T11:23:22.140681",
+  "student_name": "John Doe",
+  "roll_number": "2024-BIO-001",
+  "subject": "Biology - Cell Biology and Genetics",
+  "total_questions": 5,
+  "total_max_marks": 45,
+  "total_obtained_marks": 19.24,
+  "overall_percentage": 42.76,
+  "overall_grade": "F",
+  "questions": [
+    {
+      "question_number": 1,
+      "max_marks": 10,
+      "obtained_marks": 4.55,
+      "scores": {
+        "similarity": 0.15,
+        "coverage": 0.203,
+        "grammar": 1.0,
+        "relevance": 0.745,
+        "final_score": 4.55
+      },
+      "grade": "D",
+      "feedback": "Answer requires substantial improvement. Review the topic thoroughly.",
+      "matched_keywords": [
+        "glucose",
+        "light",
+        "which",
+        "food",
+        "water",
+        "using",
+        "atp",
+        "process",
+        "glucose.",
+        "photosynthesis"
+      ],
+      "missing_keywords": [
+        "series",
+        "**two",
+        "stroma):**",
+        "bacteria",
+        "thylakoid",
+        "**light-independent",
+        "main",
+        "regenerated",
+        "base",
+        "chloroplasts"
+      ]
+    },
+    {
+      "question_number": 2,
+      "max_marks": 10,
+      "obtained_marks": 4.27,
+      "scores": {
+        "similarity": 0.12,
+        "coverage": 0.144,
+        "grammar": 1.0,
+        "relevance": 0.736,
+        "final_score": 4.27
+      },
+      "grade": "D",
+      "feedback": "Answer requires substantial improvement. Review the topic thoroughly.",
+      "matched_keywords": [
+        "increase",
+        "inner",
+        "-",
+        "membranes",
+        "cellular",
+        "atp",
+        "outer",
+        "cristae",
+        "membrane",
+        "area"
+      ],
+      "missing_keywords": [
+        "death",
+        "(krebs",
+        "most",
+        "electron",
+        "region",
+        "3.",
+        "folded",
+        "generates",
+        "1.",
+        "synthase"
+      ]
+    },
+    {
+      "question_number": 3,
+      "max_marks": 10,
+      "obtained_marks": 4.2,
+      "scores": {
+        "similarity": 0.111,
+        "coverage": 0.135,
+        "grammar": 1.0,
+        "relevance": 0.733,
+        "final_score": 4.2
+      },
+      "grade": "D",
+      "feedback": "Answer requires substantial improvement. Review the topic thoroughly.",
+      "matched_keywords": [
+        "oxygen",
+        "cycle",
+        "glucose",
+        "+",
+        "cellular",
+        "electron",
+        "atp",
+        "respiration",
+        "down",
+        "energy"
+      ],
+      "missing_keywords": [
+        "not",
+        "electrons",
+        "that",
+        "currency.",
+        "flow",
+        "requires",
+        "waste)",
+        "**glycolysis",
+        "3.",
+        "nadh,"
+      ]
+    },
+    {
+      "question_number": 4,
+      "max_marks": 10,
+      "obtained_marks": 4.15,
+      "scores": {
+        "similarity": 0.106,
+        "coverage": 0.123,
+        "grammar": 1.0,
+        "relevance": 0.732,
+        "final_score": 4.15
+      },
+      "grade": "D",
+      "feedback": "Answer requires substantial improvement. Review the topic thoroughly.",
+      "matched_keywords": [
+        "specific",
+        "where",
+        "activation",
+        "up",
+        "speed",
+        "active",
+        "ph",
+        "polymerase",
+        "that",
+        "sites"
+      ],
+      "missing_keywords": [
+        "not",
+        "amylase,",
+        "breaks",
+        "rate",
+        "high",
+        "reactions:**",
+        "**lower",
+        "region",
+        "3.",
+        "**characteristics:**"
+      ]
+    },
+    {
+      "question_number": 5,
+      "max_marks": 5,
+      "obtained_marks": 2.07,
+      "scores": {
+        "similarity": 0.104,
+        "coverage": 0.123,
+        "grammar": 1.0,
+        "relevance": 0.731,
+        "final_score": 4.14
+      },
+      "grade": "D",
+      "feedback": "Answer requires substantial improvement. Review the topic thoroughly.",
+      "matched_keywords": [
+        "cell",
+        "double",
+        "carries",
+        "material",
+        "that",
+        "t",
+        "hereditary",
+        "instructions",
+        "genetic",
+        "dna"
+      ],
+      "missing_keywords": [
+        "**two",
+        "particular",
+        "antiparallel",
+        "**protein",
+        "other",
+        "backbone:**",
+        "specific",
+        "chromosomes",
+        "**nitrogenous",
+        "pairing:**"
+      ]
+    }
+  ],
+  "reference_answers_used": {
+    "1": "Photosynthesis is the process by which green plants, algae, and some bacteria convert light energy into chemical energy stored in glucose. The process occurs primarily in the chloroplasts of plant cells.\n\n**Overall Equation:**\n6CO₂ + 6H₂O + light energy → C₆H₁₂O₆ + 6O₂\n\n**Two Main Stages:**\n\n1. **Light-Dependent Reactions (occur in thylakoid membranes):**\n   - Chlorophyll absorbs light energy\n   - Water molecules are split (photolysis), releasing O₂\n   - ATP and NADPH are produced\n   - Oxygen is released as a byproduct\n\n2. **Light-Independent Reactions / Calvin Cycle (occur in stroma):**\n   - CO₂ is fixed using the enzyme RuBisCO\n   - ATP and NADPH from light reactions provide energy\n   - CO₂ is converted into glucose through a series of reactions\n   - ADP and NADP⁺ are regenerated\n\n**Importance:** Photosynthesis produces oxygen, forms the base of food chains, and removes CO₂ from the atmosphere.",
+    "2": "Mitochondria are membrane-bound organelles known as the \"powerhouses of the cell\" because they generate most of the cell's ATP through cellular respiration.\n\n**Structure:**\n- **Outer membrane:** Smooth, permeable membrane containing porins\n- **Intermembrane space:** Region between outer and inner membranes\n- **Inner membrane:** Highly folded into cristae, contains electron transport chain proteins and ATP synthase\n- **Matrix:** Innermost compartment containing mitochondrial DNA, ribosomes, and enzymes for Krebs cycle\n\n**Functions:**\n1. **ATP Production:** Site of aerobic respiration (Krebs cycle and oxidative phosphorylation)\n2. **Calcium Storage:** Regulates intracellular calcium levels\n3. **Apoptosis:** Releases cytochrome c to trigger programmed cell death\n4. **Heat Production:** Generates heat through uncoupling proteins in brown fat\n\nThe cristae increase surface area for maximum ATP production efficiency.",
+    "3": "Cellular respiration is the metabolic process that breaks down glucose to produce ATP (adenosine triphosphate), the cell's energy currency.\n\n**Three Main Stages:**\n\n1. **Glycolysis (Cytoplasm):**\n   - Glucose (6C) is split into two pyruvate molecules (3C)\n   - Net yield: 2 ATP + 2 NADH\n   - Does not require oxygen (anaerobic)\n\n2. **Krebs Cycle / Citric Acid Cycle (Mitochondrial matrix):**\n   - Pyruvate is converted to Acetyl-CoA\n   - Acetyl-CoA enters the cycle\n   - Produces: 2 ATP, 6 NADH, 2 FADH₂, and CO₂ (as waste)\n   - Requires oxygen (aerobic)\n\n3. **Electron Transport Chain & Oxidative Phosphorylation (Inner mitochondrial membrane):**\n   - NADH and FADH₂ donate electrons to ETC\n   - Electrons flow through protein complexes\n   - Protons pumped into intermembrane space create gradient\n   - ATP synthase uses proton gradient to produce ~32-34 ATP\n   - Oxygen is final electron acceptor, forming H₂O\n\n**Total ATP Yield:** ~36-38 ATP per glucose molecule\n\n**Importance:** Provides energy for all cellular activities, essential for survival of aerobic organisms.",
+    "4": "Enzymes are biological catalysts (usually proteins) that speed up chemical reactions in living organisms without being consumed in the process.\n\n**Characteristics:**\n- **Specificity:** Each enzyme catalyzes a specific reaction\n- **Active Site:** Region where substrate binds (lock-and-key or induced-fit model)\n- **Reusability:** Enzymes are not used up and can be reused\n- **Lower Activation Energy:** Reduce energy needed for reaction to occur\n\n**Role in Biological Reactions:**\n1. **Metabolic Pathways:** Series of enzyme-catalyzed reactions (e.g., glycolysis)\n2. **Digestion:** Amylase, protease, lipase break down food molecules\n3. **DNA Replication:** DNA polymerase synthesizes new DNA strands\n4. **Signal Transduction:** Kinases and phosphatases regulate cellular processes\n\n**Factors Affecting Enzyme Activity:**\n- **Temperature:** Optimal at 37°C in humans; denatures at high temps\n- **pH:** Each enzyme has optimal pH (e.g., pepsin pH 2, trypsin pH 8)\n- **Substrate Concentration:** Rate increases until all active sites saturated\n- **Inhibitors:** Competitive (block active site) or non-competitive (change enzyme shape)\n\n**Examples:** Catalase breaks down H₂O₂; Lactase digests lactose; ATP synthase makes ATP.",
+    "5": "DNA (Deoxyribonucleic acid) is the hereditary material that carries genetic information in all living organisms.\n\n**Structure (Double Helix Model by Watson & Crick, 1953):**\n- **Two antiparallel strands** twisted into a right-handed helix\n- **Sugar-phosphate backbone:** Alternating deoxyribose sugar and phosphate groups\n- **Nitrogenous bases:** Project inward, forming hydrogen bonds\n  - Purines: Adenine (A) and Guanine (G) - double ring\n  - Pyrimidines: Thymine (T) and Cytosine (C) - single ring\n- **Complementary Base Pairing:** A pairs with T (2 H-bonds), G pairs with C (3 H-bonds)\n- **Antiparallel:** One strand 5'→3', other 3'→5'\n\n**Significance in Heredity:**\n1. **Genetic Information Storage:** Sequence of bases encodes genetic instructions\n2. **Replication:** Semi-conservative replication ensures accurate copying before cell division\n3. **Protein Synthesis:** DNA → RNA → Protein (Central Dogma)\n4. **Mutations:** Changes in DNA sequence cause genetic variation\n5. **Chromosomes:** DNA packaged with histone proteins into chromosomes\n6. **Genes:** Specific DNA sequences that code for particular traits\n\nThe complementary structure allows accurate replication and transmission of genetic information from parents to offspring."
+  },
+  "student_answers": {
+    "1": "Photosynthesis is how plants make food using sunlight.They take in carbon dioxide and water, and use chlorophyll in their leaves to COnvert these into gluCOse and oxygen.The process has two stages: light reactions that capture energy from sunlight, and dark reactions (Calvin cycle) that make gluCOse.Chlorophyll absorbs light and splits water molecules.The energy is used to produce ATP which is then used to COnvert CO2 into glucose.",
+    "2": "Mitochondria are the powerhouse of the cell.They have two membranes - outer and inner.The inner membrane has folds called cristae.Inside is the matrix which has enzymes.Mitochondria make ATP energy through cellular respiration.Oxygen is used and CO2 is released.The cristae increase surface area for more ATP production.",
+    "3": "Cellular respiration breaks down gluCOse to make ATP energy.It happens in three steps.First is glyCOlysis which breaks gluCOse in the cytoplasm and makes some ATP.Then Krebs cycle happens in mitochondria and produces more energy carriers.Finally electron transport chain makes most of the ATP.Glucose + oxygen → CO2 + water + ATP.",
+    "4": "Enzymes are proteins that speed up reactions in the body.They have active sites where substrates bind.They lower activation energy so reactions can happen faster.Different enzymes work at different pH levels and temperatures.Examples include amylase for digestion and DNA polymerase for replication.Enzymes are reusable and specific to their substrates.",
+    "5": "DNA is genetic material that carries hereditary information.It has a double helix shape with two strands.The strands have nucleotides with bases A, T, G, C.A pairs with T and G pairs with C.DNA stores instructions for making proteins.During cell division,DNA replicates so each new cell gets complete genetic information."
+  }
+}

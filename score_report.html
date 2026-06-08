@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biology Exam - Score Report</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .student-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 30px;
+            background: #f8f9fa;
+            border-bottom: 3px solid #e9ecef;
+        }
+        
+        .info-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .info-card h3 {
+            color: #667eea;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        
+        .info-card p {
+            font-size: 1.3em;
+            color: #333;
+            font-weight: 600;
+        }
+        
+        .overall-score {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+        
+        .score-circle {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .percentage {
+            font-size: 3.5em;
+            font-weight: bold;
+            color: #f5576c;
+        }
+        
+        .grade {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #667eea;
+            margin-top: 10px;
+        }
+        
+        .total-marks {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .questions {
+            padding: 40px;
+        }
+        
+        .questions h2 {
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2em;
+        }
+        
+        .question-card {
+            background: #f8f9fa;
+            border-left: 5px solid #667eea;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .question-number {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .question-score {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        
+        .score-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .metric {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .metric-name {
+            font-size: 0.85em;
+            color: #666;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        
+        .metric-value {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .feedback {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        
+        .feedback strong {
+            color: #856404;
+        }
+        
+        .keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+        
+        .keyword-tag {
+            background: #d4edda;
+            color: #155724;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85em;
+        }
+        
+        .keyword-tag.missing {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .answers-section {
+            padding: 40px;
+            background: #f8f9fa;
+            border-top: 3px solid #e9ecef;
+        }
+        
+        .answers-section h2 {
+            color: #333;
+            margin-bottom: 30px;
+        }
+        
+        .answer-comparison {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .answer-text {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            line-height: 1.6;
+        }
+        
+        .answer-label {
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 30px;
+            background: #333;
+            color: white;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .container {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎓 Biology Examination Results</h1>
+            <p>Cell Biology and Genetics</p>
+        </div>
+        
+        <div class="student-info">
+            <div class="info-card">
+                <h3>Student Name</h3>
+                <p>John Doe</p>
+            </div>
+            <div class="info-card">
+                <h3>Roll Number</h3>
+                <p>2024-BIO-001</p>
+            </div>
+            <div class="info-card">
+                <h3>Evaluation Date</h3>
+                <p>2026-04-02</p>
+            </div>
+            <div class="info-card">
+                <h3>Total Questions</h3>
+                <p>5</p>
+            </div>
+        </div>
+        
+        <div class="overall-score">
+            <div class="score-circle">
+                <div class="percentage">42.76%</div>
+                <div class="grade">Grade: F</div>
+            </div>
+            <div class="total-marks">
+                Total Marks: 19.24/45
+            </div>
+        </div>
+        
+        <div class="questions">
+            <h2>📊 Question-by-Question Analysis</h2>
+            
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div class="question-number">Question 1</div>
+                    <div class="question-score">
+                        4.55/10 marks (4.55/10)
+                    </div>
+                </div>
+                
+                <div class="score-grid">
+                    <div class="metric">
+                        <div class="metric-name">Similarity</div>
+                        <div class="metric-value">15.0%</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-name">Coverage</div>
+                        <div class="metric-value">20.3%</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-name">Grammar</div>
+                        <div class="metric-value">100.0%</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-name">Relevance</div>
+                        <div class="metric-value">74.5%</div>
+                    </div>
+                </div>
+                
+                <div class="feedback">
+                    <strong>Feedback:</strong> Answer requires substantial improvement. Review the topic thoroughly.
+                </div>
+                
+                <div>
+                    <strong>✅ Matched Keywords (10):</strong>
+                    <div class="keywords">
+<span class="keyword-tag">glucose</span><span class="keyword-tag">light</span><span class="keyword-tag">which</span><span class="keyword-tag">food</span><span class="keyword-tag">water</span><span class="keyword-tag">using</span><span class="keyword-tag">atp</span><span class="keyword-tag">process</span>
+                    </div>
+                </div>
+                
+                <div>
+                    <strong>❌ Missing Keywords:</strong>
+                    <div class="keywords">
+<span class="keyword-tag missing">series</span><span class="keyword-tag missing">**two</span><span class="keyword-tag missing">stroma):**</span><span class="keyword-tag missing">bacteria</span><span class="keyword-tag missing">thylakoid</span><span class="keyword-tag missing">**light-independent</span><span class="keyword-tag missing">main</span><span class="keyword-tag missing">regenerated</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div class="question-number">Question 2</div>
+                    <div class="question-score">
+                        4.27/10 marks (4.27/10)
+                    </div>
+                </div>
+                
+                <div class="score-grid">
+                    <div class="metric">
+                        <div class="metric-name">Similarity</div>
+                        <div class="metric-value">12.0%</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-name">Coverage</div>
+                        <div class="metric-value">14.4%</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-name">Grammar</div>
+                        <div class="metric-value">100.0%</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-name">Relevance</div>
+                        <div class="metric-value">73.6%</div>
+                    </div>
+                </div>
+                
+                <div class="feedback">
+                    <strong>Feedback:</strong> Answer requires substantial improvement. Review the topic thoroughly.
+                </div>
+                
+                <div>
+                    <strong>✅ Matched Keywords (10):</strong>
+                    <div class="keywords">
+<span class="keyword-tag">increase</span><span class="keyword-tag">inner</span><span class="keyword-tag">-</span><span class="keyword-tag">membranes</span><span class="keyword-tag">cellular</span><span class="keyword-tag">atp</span><span class="keyword-tag">outer</span><span class="keyword-tag">cristae</span>
+                    </div>
+                </div>
+                
+                <div>
+                    <strong>❌ Missing Keywords:</strong>
+                    <div class="keywords">
+<span class="keyword-tag missing">death</span><span class="keyword-tag missing">(krebs</span><span class="keyword-tag missing">most</span><span class="keyword-tag missing">electron</span><span class="keyword-tag missing">region</span><span class="keyword-tag missing">3.</span><span class="keyword-tag missing">folded</span><span class="keyword-tag missing">generates</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div class="question-number">Question 3</div>
+                    <div class="question-score">
+                        4.2/10 marks (4.2/10)
+                    </div>
+                </div>
+                
+                <div class="score-grid">
+                    <div class="metric">
+                        <div class="metric-name">Similarity</div>
+                        <div class="metric-value">11.1%</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-name">Coverage</div>
+                        <div class="metric-value">13.5%</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-name">Grammar</div>
+                        <div class="metric-value">100.0%</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-name">Relevance</div>
+                        <div class="metric-value">73.3%</div>
+                    </div>
+                </div>
+                
+                <div class="feedback">
+                    <strong>Feedback:</strong> Answer requires substantial improvement. Review the topic thoroughly.
+                </div>
+                
+                <div>
+                    <strong>✅ Matched Keywords (10):</strong>
+                    <div class="keywords">
+<span class="keyword-tag">oxygen</span><span class="keyword-tag">cycle</span><span class="keyword-tag">glucose</span><span class="keyword-tag">+</span><span class="keyword-tag">cellular</span><span class="keyword-tag">electron</span><span class="keyword-tag">atp</span><span class="keyword-tag">respiration</span>
+                    </div>
+                </div>
+                
+                <div>
+                    <strong>❌ Missing Keywords:</strong>
+                    <div class="keywords">
+<span class="keyword-tag missing">not</span><span class="keyword-tag missing">electrons</span><span class="keyword-tag missing">that</span><span class="keyword-tag missing">currency.</span><span class="keyword-tag missing">flow</span><span class="keyword-tag missing">requires</span><span class="keyword-tag missing">waste)</span><span class="keyword-tag missing">**glycolysis</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div class="question-number">Question 4</div>
+                    <div class="question-score">
+                        4.15/10 marks (4.15/10)
+                    </div>
+                </div>
+                
+                <div class="score-grid">
+                    <div class="metric">
+                        <div class="metric-name">Similarity</div>
+                        <div class="metric-value">10.6%</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-name">Coverage</div>
+                        <div class="metric-value">12.3%</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-name">Grammar</div>
+                        <div class="metric-value">100.0%</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-name">Relevance</div>
+                        <div class="metric-value">73.2%</div>
+                    </div>
+                </div>
+                
+                <div class="feedback">
+                    <strong>Feedback:</strong> Answer requires substantial improvement. Review the topic thoroughly.
+                </div>
+                
+                <div>
+                    <strong>✅ Matched Keywords (10):</strong>
+                    <div class="keywords">
+<span class="keyword-tag">specific</span><span class="keyword-tag">where</span><span class="keyword-tag">activation</span><span class="keyword-tag">up</span><span class="keyword-tag">speed</span><span class="keyword-tag">active</span><span class="keyword-tag">ph</span><span class="keyword-tag">polymerase</span>
+                    </div>
+                </div>
+                
+                <div>
+                    <strong>❌ Missing Keywords:</strong>
+                    <div class="keywords">
+<span class="keyword-tag missing">not</span><span class="keyword-tag missing">amylase,</span><span class="keyword-tag missing">breaks</span><span class="keyword-tag missing">rate</span><span class="keyword-tag missing">high</span><span class="keyword-tag missing">reactions:**</span><span class="keyword-tag missing">**lower</span><span class="keyword-tag missing">region</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div class="question-number">Question 5</div>
+                    <div class="question-score">
+                        2.07/5 marks (4.14/10)
+                    </div>
+                </div>
+                
+                <div class="score-grid">
+                    <div class="metric">
+                        <div class="metric-name">Similarity</div>
+                        <div class="metric-value">10.4%</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-name">Coverage</div>
+                        <div class="metric-value">12.3%</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-name">Grammar</div>
+                        <div class="metric-value">100.0%</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-name">Relevance</div>
+                        <div class="metric-value">73.1%</div>
+                    </div>
+                </div>
+                
+                <div class="feedback">
+                    <strong>Feedback:</strong> Answer requires substantial improvement. Review the topic thoroughly.
+                </div>
+                
+                <div>
+                    <strong>✅ Matched Keywords (10):</strong>
+                    <div class="keywords">
+<span class="keyword-tag">cell</span><span class="keyword-tag">double</span><span class="keyword-tag">carries</span><span class="keyword-tag">material</span><span class="keyword-tag">that</span><span class="keyword-tag">t</span><span class="keyword-tag">hereditary</span><span class="keyword-tag">instructions</span>
+                    </div>
+                </div>
+                
+                <div>
+                    <strong>❌ Missing Keywords:</strong>
+                    <div class="keywords">
+<span class="keyword-tag missing">**two</span><span class="keyword-tag missing">particular</span><span class="keyword-tag missing">antiparallel</span><span class="keyword-tag missing">**protein</span><span class="keyword-tag missing">other</span><span class="keyword-tag missing">backbone:**</span><span class="keyword-tag missing">specific</span><span class="keyword-tag missing">chromosomes</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+        <div class="answers-section">
+            <h2>📝 Detailed Answer Comparison</h2>
+
+            <div class="answer-comparison">
+                <h3>Question 1</h3>
+                
+                <div class="answer-label">Student Answer:</div>
+                <div class="answer-text">Photosynthesis is how plants make food using sunlight.They take in carbon dioxide and water, and use chlorophyll in their leaves to COnvert these into gluCOse and oxygen.The process has two stages: light reactions that capture energy from sunlight, and dark reactions (Calvin cycle) that make gluCOse.Chlorophyll absorbs light and splits water molecules.The energy is used to produce ATP which is then used to COnvert CO2 into glucose.</div>
+                
+                <div class="answer-label">Reference Answer (Excerpt):</div>
+                <div class="answer-text">Photosynthesis is the process by which green plants, algae, and some bacteria convert light energy into chemical energy stored in glucose. The process occurs primarily in the chloroplasts of plant cells.
+
+**Overall Equation:**
+6CO₂ + 6H₂O + light energy → C₆H₁₂O₆ + 6O₂
+
+**Two Main Stages:**
+
+1. **Light-Dependent Reactions (occur in thylakoid membranes):**
+   - Chlorophyll absorbs light energy
+   - Water molecules are split (photolysis), releasing O₂
+   - ATP and NADPH are produced
+   - Oxygen is...</div>
+            </div>
+
+            <div class="answer-comparison">
+                <h3>Question 2</h3>
+                
+                <div class="answer-label">Student Answer:</div>
+                <div class="answer-text">Mitochondria are the powerhouse of the cell.They have two membranes - outer and inner.The inner membrane has folds called cristae.Inside is the matrix which has enzymes.Mitochondria make ATP energy through cellular respiration.Oxygen is used and CO2 is released.The cristae increase surface area for more ATP production.</div>
+                
+                <div class="answer-label">Reference Answer (Excerpt):</div>
+                <div class="answer-text">Mitochondria are membrane-bound organelles known as the "powerhouses of the cell" because they generate most of the cell's ATP through cellular respiration.
+
+**Structure:**
+- **Outer membrane:** Smooth, permeable membrane containing porins
+- **Intermembrane space:** Region between outer and inner membranes
+- **Inner membrane:** Highly folded into cristae, contains electron transport chain proteins and ATP synthase
+- **Matrix:** Innermost compartment containing mitochondrial DNA, ribosomes, and e...</div>
+            </div>
+
+            <div class="answer-comparison">
+                <h3>Question 3</h3>
+                
+                <div class="answer-label">Student Answer:</div>
+                <div class="answer-text">Cellular respiration breaks down gluCOse to make ATP energy.It happens in three steps.First is glyCOlysis which breaks gluCOse in the cytoplasm and makes some ATP.Then Krebs cycle happens in mitochondria and produces more energy carriers.Finally electron transport chain makes most of the ATP.Glucose + oxygen → CO2 + water + ATP.</div>
+                
+                <div class="answer-label">Reference Answer (Excerpt):</div>
+                <div class="answer-text">Cellular respiration is the metabolic process that breaks down glucose to produce ATP (adenosine triphosphate), the cell's energy currency.
+
+**Three Main Stages:**
+
+1. **Glycolysis (Cytoplasm):**
+   - Glucose (6C) is split into two pyruvate molecules (3C)
+   - Net yield: 2 ATP + 2 NADH
+   - Does not require oxygen (anaerobic)
+
+2. **Krebs Cycle / Citric Acid Cycle (Mitochondrial matrix):**
+   - Pyruvate is converted to Acetyl-CoA
+   - Acetyl-CoA enters the cycle
+   - Produces: 2 ATP, 6 NADH, 2 FA...</div>
+            </div>
+
+            <div class="answer-comparison">
+                <h3>Question 4</h3>
+                
+                <div class="answer-label">Student Answer:</div>
+                <div class="answer-text">Enzymes are proteins that speed up reactions in the body.They have active sites where substrates bind.They lower activation energy so reactions can happen faster.Different enzymes work at different pH levels and temperatures.Examples include amylase for digestion and DNA polymerase for replication.Enzymes are reusable and specific to their substrates.</div>
+                
+                <div class="answer-label">Reference Answer (Excerpt):</div>
+                <div class="answer-text">Enzymes are biological catalysts (usually proteins) that speed up chemical reactions in living organisms without being consumed in the process.
+
+**Characteristics:**
+- **Specificity:** Each enzyme catalyzes a specific reaction
+- **Active Site:** Region where substrate binds (lock-and-key or induced-fit model)
+- **Reusability:** Enzymes are not used up and can be reused
+- **Lower Activation Energy:** Reduce energy needed for reaction to occur
+
+**Role in Biological Reactions:**
+1. **Metabolic Path...</div>
+            </div>
+
+            <div class="answer-comparison">
+                <h3>Question 5</h3>
+                
+                <div class="answer-label">Student Answer:</div>
+                <div class="answer-text">DNA is genetic material that carries hereditary information.It has a double helix shape with two strands.The strands have nucleotides with bases A, T, G, C.A pairs with T and G pairs with C.DNA stores instructions for making proteins.During cell division,DNA replicates so each new cell gets complete genetic information.</div>
+                
+                <div class="answer-label">Reference Answer (Excerpt):</div>
+                <div class="answer-text">DNA (Deoxyribonucleic acid) is the hereditary material that carries genetic information in all living organisms.
+
+**Structure (Double Helix Model by Watson & Crick, 1953):**
+- **Two antiparallel strands** twisted into a right-handed helix
+- **Sugar-phosphate backbone:** Alternating deoxyribose sugar and phosphate groups
+- **Nitrogenous bases:** Project inward, forming hydrogen bonds
+  - Purines: Adenine (A) and Guanine (G) - double ring
+  - Pyrimidines: Thymine (T) and Cytosine (C) - single ring...</div>
+            </div>
+
+        </div>
+        
+        <div class="footer">
+            <p>Generated on April 02, 2026 at 11:25 AM</p>
+            <p>OCR-Based Automated Evaluation System</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,187 @@
+{
+  "evaluation_date": "2026-04-02T12:00:48.742498",
+  "source_files": {
+    "question_paper": "sample_question_paper.pdf",
+    "student_answers": "sample_handwritten_answers_generated.pdf"
+  },
+  "total_questions": 5,
+  "total_max_marks": 50.0,
+  "total_obtained_marks": 38.53,
+  "overall_percentage": 77.06,
+  "overall_grade": "B+",
+  "questions": [
+    {
+      "question_number": 1,
+      "student_answer": "Photosynthesis is the process by which green plants use sunlight to synthesize foods from carbon dioxide and water. Photosynthesis in plants generally involves the green pigment chlorophyll and generates oxygen as a byproduct. The process converts light energy into chemical energy stored in glucose.",
+      "reference_answer": "Photosynthesis is the biochemical process by which green plants, algae, and some bacteria convert light energy into chemical energy stored in glucose molecules. The overall equation is: 6CO₂ + 6H₂O + light energy → C₆H₁₂O₆ + 6O₂. The process occurs in chloroplasts and involves two main stages: light-dependent reactions (which capture light energy to produce ATP and NADPH) and the Calvin cycle (which uses these products to fix CO₂ into glucose). Chlorophyll pigments absorb light energy, primarily in the blue and red wavelengths.",
+      "scores": {
+        "similarity": 0.72,
+        "coverage": 0.68,
+        "grammar": 0.85,
+        "relevance": 0.88,
+        "final_score": 7.66
+      },
+      "max_marks": 10,
+      "obtained_marks": 7.66,
+      "grade": "B+",
+      "percentage": 76.6,
+      "feedback": "Good explanation of photosynthesis. You covered the basic process correctly but missed details about light-dependent reactions and Calvin cycle. Include the chemical equation for completeness.",
+      "matched_keywords": [
+        "photosynthesis",
+        "light energy",
+        "chlorophyll",
+        "glucose",
+        "oxygen",
+        "chemical energy",
+        "plants",
+        "sunlight"
+      ],
+      "missing_keywords": [
+        "chloroplasts",
+        "Calvin cycle",
+        "light-dependent reactions",
+        "CO₂",
+        "NADPH",
+        "chemical equation"
+      ]
+    },
+    {
+      "question_number": 2,
+      "student_answer": "Mitochondria are membrane-bound organelles found in the cytoplasm of eukaryotic cells. They have an outer membrane and inner membrane with cristae. Mitochondria produce ATP through cellular respiration and are known as the powerhouse of the cell. They contain their own DNA and ribosomes.",
+      "reference_answer": "Mitochondria are double-membrane-bound organelles found in eukaryotic cells. Structure: Outer membrane (smooth, permeable), intermembrane space, inner membrane (folded into cristae, contains ETC proteins), and matrix (contains mitochondrial DNA, ribosomes, enzymes). Function: Site of aerobic respiration including Krebs cycle and oxidative phosphorylation, producing ATP. Also involved in calcium homeostasis, apoptosis regulation, and heat production. The cristae increase surface area for maximum ATP production efficiency.",
+      "scores": {
+        "similarity": 0.75,
+        "coverage": 0.71,
+        "grammar": 0.87,
+        "relevance": 0.9,
+        "final_score": 7.92
+      },
+      "max_marks": 10,
+      "obtained_marks": 7.92,
+      "grade": "B+",
+      "percentage": 79.2,
+      "feedback": "Solid understanding of mitochondria structure and function. Good mention of ATP production. Could elaborate more on the role of cristae and mitochondrial DNA.",
+      "matched_keywords": [
+        "mitochondria",
+        "ATP",
+        "cellular respiration",
+        "outer membrane",
+        "inner membrane",
+        "cristae",
+        "matrix",
+        "organelle"
+      ],
+      "missing_keywords": [
+        "intermembrane space",
+        "oxidative phosphorylation",
+        "ETC proteins",
+        "calcium homeostasis",
+        "apoptosis"
+      ]
+    },
+    {
+      "question_number": 3,
+      "student_answer": "Cellular respiration is the metabolic process that converts biochemical energy from nutrients into ATP. It involves glycolysis, Krebs cycle, and electron transport chain. Aerobic respiration requires oxygen and produces CO2 and water. The process occurs in mitochondria and cytoplasm.",
+      "reference_answer": "Cellular respiration is a catabolic pathway that breaks down organic molecules to release energy stored in chemical bonds. Three main stages: 1) Glycolysis (cytoplasm): Glucose → 2 Pyruvate + 2 ATP + 2 NADH. 2) Krebs Cycle (mitochondrial matrix): Acetyl-CoA → 3 NADH + FADH₂ + ATP + CO₂. 3) Electron Transport Chain & Oxidative Phosphorylation (inner mitochondrial membrane): NADH/FADH₂ donate electrons, creating proton gradient that drives ATP synthase to produce ~32-34 ATP. Total yield: ~36-38 ATP per glucose molecule.",
+      "scores": {
+        "similarity": 0.7,
+        "coverage": 0.65,
+        "grammar": 0.84,
+        "relevance": 0.86,
+        "final_score": 7.45
+      },
+      "max_marks": 15,
+      "obtained_marks": 11.18,
+      "grade": "B",
+      "percentage": 74.5,
+      "feedback": "Clear description of cellular respiration stages. You identified the key processes but need more detail on ATP yield and location of each stage. Good mention of aerobic conditions.",
+      "matched_keywords": [
+        "cellular respiration",
+        "ATP",
+        "glycolysis",
+        "Krebs cycle",
+        "electron transport chain",
+        "mitochondria",
+        "aerobic"
+      ],
+      "missing_keywords": [
+        "pyruvate",
+        "acetyl-CoA",
+        "NADH",
+        "FADH₂",
+        "proton gradient",
+        "ATP synthase",
+        "oxidative phosphorylation"
+      ]
+    },
+    {
+      "question_number": 4,
+      "student_answer": "Enzymes are biological catalysts that speed up chemical reactions without being consumed. They have specific active sites where substrates bind. Enzymes work by lowering activation energy. Examples include amylase, protease, and lipase. They are essential for digestion and metabolism.",
+      "reference_answer": "Enzymes are protein catalysts that accelerate chemical reactions by lowering activation energy. Key characteristics: specificity (lock-and-key or induced-fit model), reusability, sensitivity to temperature and pH. Mechanism: Substrate binds to active site forming enzyme-substrate complex, reaction occurs, products released. Classification: oxidoreductases, transferases, hydrolases, lyases, isomerases, ligases. Regulation includes competitive/non-competitive inhibition, allosteric regulation, and feedback inhibition.",
+      "scores": {
+        "similarity": 0.73,
+        "coverage": 0.69,
+        "grammar": 0.86,
+        "relevance": 0.88,
+        "final_score": 7.74
+      },
+      "max_marks": 10,
+      "obtained_marks": 7.74,
+      "grade": "B+",
+      "percentage": 77.4,
+      "feedback": "Good definition of enzymes and their catalytic role. Nice examples provided. Expand on enzyme specificity and factors affecting enzyme activity like temperature and pH.",
+      "matched_keywords": [
+        "enzymes",
+        "catalysts",
+        "active site",
+        "substrates",
+        "activation energy",
+        "amylase",
+        "protease",
+        "lipase"
+      ],
+      "missing_keywords": [
+        "enzyme-substrate complex",
+        "lock-and-key",
+        "induced-fit",
+        "allosteric regulation",
+        "inhibition types"
+      ]
+    },
+    {
+      "question_number": 5,
+      "student_answer": "DNA (deoxyribonucleic acid) carries genetic information. It has a double helix structure with two strands connected by base pairs (A-T, G-C). DNA is composed of nucleotides containing sugar, phosphate, and nitrogenous bases. It replicates during cell division and codes for proteins.",
+      "reference_answer": "DNA is a double-stranded helical nucleic acid containing genetic instructions for development and function. Structure (Watson-Crick model): Sugar-phosphate backbone with nitrogenous bases projecting inward. Base pairing: Adenine (A) pairs with Thymine (T) via 2 hydrogen bonds; Guanine (G) pairs with Cytosine (C) via 3 hydrogen bonds. Antiparallel strands (5'→3' and 3'→5'). Functions: genetic information storage, replication for inheritance, transcription to RNA, translation to proteins. Replication is semi-conservative and bidirectional.",
+      "scores": {
+        "similarity": 0.76,
+        "coverage": 0.73,
+        "grammar": 0.88,
+        "relevance": 0.91,
+        "final_score": 8.05
+      },
+      "max_marks": 5,
+      "obtained_marks": 4.03,
+      "grade": "A-",
+      "percentage": 80.5,
+      "feedback": "Accurate description of DNA structure. Good mention of base pairing rules. Could add more about the antiparallel nature and significance of complementary base pairing.",
+      "matched_keywords": [
+        "DNA",
+        "double helix",
+        "base pairs",
+        "nucleotides",
+        "genetic information",
+        "replication",
+        "proteins"
+      ],
+      "missing_keywords": [
+        "sugar-phosphate backbone",
+        "hydrogen bonds",
+        "adenine",
+        "thymine",
+        "guanine",
+        "cytosine",
+        "antiparallel"
+      ]
+    }
+  ]
+}
